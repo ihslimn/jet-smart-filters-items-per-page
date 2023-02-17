@@ -50,7 +50,7 @@ class Items_Per_Page_Macro extends \Jet_Engine_Base_Macros {
 		
 		$storage_type = $args['jsf_storage_type'] ?? 'session';
 
-		$result = Storage::get( 'items_per_page', $posts_per_page, $suffix, $storage_type );
+		$result = Storage::get( 'items_per_page', $items_per_page, $suffix, $storage_type );
 		
 		return $result;
 		

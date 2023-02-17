@@ -9,17 +9,17 @@ if ( ! defined( 'WPINC' ) ) {
 
 class Storage {
 	
-	public static function get( $key, $value, $suffix = '', $storage_type = 'session' ) {
+	public static function get( $key, $default, $suffix = '', $storage_type = 'session' ) {
 
 		$result = '';
 
 		switch ( $storage_type ) {
 
 			case 'session':
-				$result = Session_Storage::instance()->get( $key, $value, $suffix );
+				$result = Session_Storage::instance()->get( $key, $default, $suffix );
 				break;
 			case 'cookies':
-				$result = Cookies_Storage::instance()->get( $key, $value, $suffix );
+				$result = Cookies_Storage::instance()->get( $key, $default, $suffix );
 				break;
 
 		}
