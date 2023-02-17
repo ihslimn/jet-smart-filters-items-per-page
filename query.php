@@ -19,16 +19,22 @@ class Filters_Query {
 
 		add_filter( 'jet-smart-filters/query/meta-query-row', array( $this, 'clear_meta_query' ) );
 
-		add_filter( 'jet-smart-filters/query/final-query', array( $this, 'modify_query' ) );
+		add_filter( 'jet-smart-filters/query/final-query', array( $this, 'modify_query' ), 999 );
 
 		add_filter( 'jet-smart-filters/query/request', array( $this, 'check_request' ), 0, 2 );
 
 	}
 
 	public function modify_query( $query ) {
-
+		
+		$_vars = array(
+			'p',
+		);
+		
 		foreach ( $this->missing_vars as $var ) {
-			unset( $query[ $var ] );
+			if ( in_array( $var, $_vars ) ) {
+				unset( $query[ $var ] );
+			}
 		}
 
 		return $query;
