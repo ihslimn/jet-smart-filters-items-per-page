@@ -67,18 +67,6 @@ if ( ! class_exists( '\JSF_Items_Per_Page\Plugin' ) ) {
 
 			new Filters_Query();
 
-			//new JEC_Options();
-			//require $this->path . 'meta-tracker.php';
-			//new JEC_Meta_Track();
-			//require $this->path . 'subscriber_manager.php';
-			//new JEC_Subscriber_Manager();
-			//require $this->path . 'db.php';
-			//$this->db = new JEC_DB();
-
-			//add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_public_assets' ), 10 );
-
-			//add_action( 'wp_enqueue_scripts', array( $this, 'localize_data' ), 20 );
-
 		}
 
 		public function register_macros() {

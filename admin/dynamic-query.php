@@ -31,7 +31,7 @@ class Dynamic_Query {
 			}
 
 			public function get_label() {
-				return 'JetEngine: ' . $this->label;
+				return $this->label;
 			}
 
 			public function get_extra_args() {
