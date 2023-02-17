@@ -16,8 +16,7 @@ class Filters_Query {
 	public function __construct() {
 
 		add_filter( 'jet-smart-filters/filter-instance/args', array( $this, 'preset_value' ), 0, 2 );
-		add_filter( 'jet-smart-filters/query/vars', array( $this, 'register_filter_query_vars' ) );
-		add_filter( 'jet-smart-filters/query/add-var', array( $this, 'process_filter_query_vars' ), 10, 4 );
+
 		add_filter( 'jet-smart-filters/query/meta-query-row', array( $this, 'clear_meta_query' ) );
 
 		add_filter( 'jet-smart-filters/query/final-query', array( $this, 'modify_query' ) );
@@ -27,12 +26,10 @@ class Filters_Query {
 	}
 
 	public function modify_query( $query ) {
-		return $query;
+
 		foreach ( $this->missing_vars as $var ) {
 			unset( $query[ $var ] );
 		}
-
-		var_dump( $this->request );
 
 		return $query;
 
@@ -128,18 +125,24 @@ class Filters_Query {
 
 	public function preset_value( $args, $filter_instance ) {
 		
+		if ( false !== strpos( $args['query_var'], Plugin::$key ) ) {
+
+			$params = explode( '::', $args['query_var'] );
+
+			$key = 'items_per_page';
+
+			$default = '';
+
+			$suffix = $params[1] ?? '';
+
+			$storage_type = $params[2] ?? 'session';
+
+			$args['current_value'] = Storage::get( $key, $default, $suffix, $storage_type );
+
+		}
+
 		return $args;
 
-	}
-
-	public function register_filter_query_vars( $vars ) {
-		//array_unshift( $vars, Plugin::$key );
-		return $vars;
-	}
-
-	public function process_filter_query_vars( $value, $key, $var, $query ) {
-		//var_dump( $value, $key, $var );
-		return $value;
 	}
 
 	public function clear_meta_query( $row ) {
