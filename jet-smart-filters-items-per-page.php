@@ -43,8 +43,6 @@ if ( ! class_exists( '\JSF_Items_Per_Page\Plugin' ) ) {
 
 			}
 
-			//method_exists( jet_smart_filters()->utils, 'array_insert_after' )
-
 			add_action( 'after_setup_theme', array( $this, 'init_components' ), 0 );
 
 		}
