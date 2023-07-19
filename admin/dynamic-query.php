@@ -56,7 +56,7 @@ class Dynamic_Query {
 			}
 
 			public function get_delimiter() {
-				return '::';
+				return '__';
 			}
 
 		};
