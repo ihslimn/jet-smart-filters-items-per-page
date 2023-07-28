@@ -28,11 +28,8 @@ class Filters_Query {
 	public function check_request( $request, $query_manager ) {
 
 		$vars = array( 
-			'sort', 
-			'alphabet',
 			'p',
 			'author',
-			'post_type',
 		);
 
 		$present_vars = array();
